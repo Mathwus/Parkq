@@ -6,24 +6,23 @@ import {environment} from "../environments/environment";
 import "rxjs/add/operator/map";
 import "rxjs/add/observable/of";
 
-export interface Park {
+export interface Company {
 	id: number,
-	company: number,
 	name: string,
 	description: string,
 	background: number
 }
 
 @Injectable()
-export class ParkService {
+export class CompanyService {
 
 	constructor(private http: Http) {
     }
     
-    fixed: Park[] = JSON.parse(
-        `[{ "id": 1, "company": 1, "name": "Beto Carreiro World", "description": "ainda não sei", "background": 1 }]`);
+    fixed: Company[] = JSON.parse(
+        `[{ "id": 1, "name": "Beto Carreiro World", "description": "ainda não sei", "background": 1 }]`);
 
-	public getParks(): Observable<Park[]> {
+	public getParks(): Observable<Company[]> {
         return Observable.of(this.fixed);
         /*
         return this.http.get(environment.api + 'park?size=100')
