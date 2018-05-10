@@ -20,7 +20,7 @@ export class LocationService {
   fixed: Location[] = JSON.parse(
     `[{ "id": 1, "description": "ainda não sei" }]`);
 
-  public getParks(): Observable<Location[]> {
+  public getLocations(): Observable<Location[]> {
     return Observable.of(this.fixed);
     /*
     return this.http.get(environment.api + 'park?size=100')

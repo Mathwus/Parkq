@@ -24,7 +24,7 @@ export class AttractionService {
   fixed: Attraction[] = JSON.parse(
     `[{ "id": 1, "name": "Parque das aguas" }]`);
 
-  public getParks(): Observable<Attraction[]> {
+  public getAttractions(): Observable<Attraction[]> {
     return Observable.of(this.fixed);
     /*
     return this.http.get(environment.api + 'park?size=100')
