@@ -22,7 +22,7 @@ export class ImageService {
     fixed: Image[] = JSON.parse(
         `[{ "id": 1, "name": "Plano Fundo", "Company": 1, "data": "/assets/imgs/logo.png" }]`);        
 
-	public getParks(): Observable<Image[]> {
+	public getImages(): Observable<Image[]> {
         return Observable.of(this.fixed);
         /*
         return this.http.get(environment.api + 'park?size=100')
