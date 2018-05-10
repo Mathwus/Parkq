@@ -12,5 +12,5 @@ npm i
 4. no mesmo powershell do item 3, executar:
 ionic serve
 
-*O passo 4 sobe o front. Após esse passo, só precisa executar isso no powershell pra subir o front.
+*O passo 4 sobe o front. Após esse passo, só precisa executar o passo 4 no powershell pra subir o front.
 
