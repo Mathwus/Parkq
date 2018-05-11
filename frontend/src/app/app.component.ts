@@ -19,7 +19,7 @@ export class MyApp {
 
 	public parks: Park[];
 
-  pages: Array<{title: string, component: any}> = [];
+  pages: Array<Page> = [];
 
   constructor(private parkService: ParkService,
               public platform: Platform, 
@@ -29,6 +29,7 @@ export class MyApp {
   }
 
 	public ngOnInit(): void {
+    this.pages.push({ title: 'perfil', component: HomePage});
     this.parkService.getParks().subscribe((parks: Park[]) => { 
       this.parks = parks; 
       parks.forEach(park => this.pages.push({ title: park.name, component: ParkPage}));
@@ -45,9 +46,21 @@ export class MyApp {
     });
   }
 
-  openPage(page) {
+  page:Page;
+  openPark(p) {
+    this.page = this.pages.find(page => page.title == p.name);
     // Reset the content nav to have just this page
     // we wouldn't want the back button to show in this scenario
-    this.nav.setRoot(page.component, { park: this.parks.find(park => park.name == page.title)});
+    this.nav.setRoot(this.page.component, {park: p});
   }
+
+  openPage(pageTitle) {
+    this.page = this.pages.find(page => page.title == pageTitle);
+    // Reset the content nav to have just this page
+    // we wouldn't want the back button to show in this scenario
+    this.nav.setRoot(this.page.component);
+  }
+}
+export interface Page {
+  title: string, component: any
 }
