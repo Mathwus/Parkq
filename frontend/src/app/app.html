@@ -10,8 +10,8 @@
       
       <ion-item-group>
         <ion-item-divider color="light">Parques Disponiveis</ion-item-divider>
-        <button menuClose ion-item *ngFor="let p of pages" (click)="openPage(p)">
-          {{p.title}}
+        <button menuClose ion-item *ngFor="let p of parks" (click)="openPark(p)">
+          {{p.name}}
         </button>
       </ion-item-group>
 
