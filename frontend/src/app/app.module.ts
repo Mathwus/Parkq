@@ -12,13 +12,15 @@ import { SplashScreen } from '@ionic-native/splash-screen';
 import {Http, HttpModule, RequestOptions, XHRBackend} from "@angular/http";
 import {interceptHttpFactory, InterceptHttpService} from "../providers/http/intercept-http.service";
 import { ParkPage } from '../pages/park/park';
+import { TicketPage } from '../pages/ticket/ticket';
 
 @NgModule({
   declarations: [
     MyApp,
     HomePage,
     ListPage,
-    ParkPage
+    ParkPage,
+    TicketPage
   ],
   imports: [
     BrowserModule,
@@ -30,7 +32,8 @@ import { ParkPage } from '../pages/park/park';
     MyApp,
     HomePage,
     ListPage,
-    ParkPage
+    ParkPage,
+    TicketPage
   ],
   providers: [
     StatusBar,

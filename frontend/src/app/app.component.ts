@@ -4,7 +4,7 @@ import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 
 import { HomePage } from '../pages/home/home';
-
+import { TicketPage } from '../pages/ticket/ticket'
 import { ParkService, Park } from '../services/park.service';
 import { ParkPage } from '../pages/park/park';
 
@@ -30,6 +30,7 @@ export class MyApp {
 
 	public ngOnInit(): void {
     this.pages.push({ title: 'perfil', component: HomePage});
+    this.pages.push({ title: 'ticket', component: TicketPage});
     this.parkService.getParks().subscribe((parks: Park[]) => { 
       this.parks = parks; 
       parks.forEach(park => this.pages.push({ title: park.name, component: ParkPage}));
