@@ -14,6 +14,7 @@ import {interceptHttpFactory, InterceptHttpService} from "../providers/http/inte
 import { ParkPage } from '../pages/park/park';
 import { TicketPage } from '../pages/ticket/ticket';
 import { AttractionPage } from '../pages/attraction/attraction';
+import {ImageService} from "../services/image.service";
 
 @NgModule({
   declarations: [
@@ -41,6 +42,7 @@ import { AttractionPage } from '../pages/attraction/attraction';
   providers: [
     StatusBar,
     SplashScreen,
+    ImageService,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
 		{
 			provide: LocationStrategy,

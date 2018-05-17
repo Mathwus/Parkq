@@ -1,13 +1,13 @@
 <ion-menu [content]="content">
   <ion-header>
-    <ion-toolbar>
+    <ion-toolbar menuClose (click)="openPage('home')">
       <ion-title>PARKQ</ion-title>
     </ion-toolbar>
   </ion-header>
 
   <ion-content>
     <ion-list>
-      
+
       <ion-item-group>
         <ion-item-divider color="light">Parques Disponiveis</ion-item-divider>
         <button menuClose ion-item *ngFor="let p of parks" (click)="openPark(p)">

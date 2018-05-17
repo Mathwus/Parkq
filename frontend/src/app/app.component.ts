@@ -23,22 +23,22 @@ export class MyApp {
   pages: Array<Page> = [];
 
   constructor(private parkService: ParkService,
-              public platform: Platform, 
-              public statusBar: StatusBar, 
+              public platform: Platform,
+              public statusBar: StatusBar,
               public splashScreen: SplashScreen) {
     this.initializeApp();
   }
 
 	public ngOnInit(): void {
+    this.pages.push({ title: 'home', component: HomePage});
     this.pages.push({ title: 'perfil', component: HomePage});
     this.pages.push({ title: 'ticket', component: TicketPage});
     this.pages.push({ title: 'attraction', component: AttractionPage});
-    this.parkService.getParks().subscribe((parks: Park[]) => { 
-      this.parks = parks; 
-      parks.forEach(park => this.pages.push({ title: park.name, component: ParkPage}));
+    // Busca os parques
+    this.parkService.getParks().subscribe((parks: Park[]) => {
+      this.parks = parks;
     });
 	}
-
 
   initializeApp() {
     this.platform.ready().then(() => {
@@ -49,21 +49,19 @@ export class MyApp {
     });
   }
 
-  page:Page;
   openPark(p) {
-    this.page = this.pages.find(page => page.title == p.name);
-    // Reset the content nav to have just this page
-    // we wouldn't want the back button to show in this scenario
-    this.nav.setRoot(this.page.component, {park: p});
+    // Sempre abre a Pagina Park passando como parametro o parque selecionado
+    this.nav.push(ParkPage, {park: p});
   }
 
+  page:Page;
   openPage(pageTitle) {
     this.page = this.pages.find(page => page.title == pageTitle);
-    // Reset the content nav to have just this page
-    // we wouldn't want the back button to show in this scenario
-    this.nav.setRoot(this.page.component);
+    // Abre a pagina Passada como parametro
+    this.nav.push(this.page.component);
   }
 }
+
 export interface Page {
   title: string, component: any
 }
