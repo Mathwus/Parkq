@@ -15,6 +15,7 @@ import { ParkPage } from '../pages/park/park';
 import { TicketPage } from '../pages/ticket/ticket';
 import { AttractionPage } from '../pages/attraction/attraction';
 import {ImageService} from "../services/image.service";
+import { CompanyPage } from '../pages/company/company';
 
 @NgModule({
   declarations: [
@@ -23,7 +24,9 @@ import {ImageService} from "../services/image.service";
     ListPage,
     ParkPage,
     TicketPage,
-    AttractionPage
+    AttractionPage,
+    CompanyPage,
+    ParkPage
   ],
   imports: [
     BrowserModule,
@@ -37,7 +40,9 @@ import {ImageService} from "../services/image.service";
     ListPage,
     ParkPage,
     TicketPage,
-    AttractionPage
+    AttractionPage,
+    CompanyPage,
+    ParkPage
   ],
   providers: [
     StatusBar,
