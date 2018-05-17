@@ -28,7 +28,7 @@ export class ImageService {
             .map((res: Response) => res.json().content);
         */
 	}
-
+	
   public getImage(image: number): Observable<Image> {
     return Observable.of(this.fixed.find(i => i.id == image));
   }

@@ -26,12 +26,15 @@ export class HomePage {
         this.imageService.getImage(p.background).subscribe((image: Image) =>{
           this.images.push(image);
         })
-      )
+      );
     });
   }
 
   getImage(p: Park) : string{
-    return this.images.find(i => i.id == p.background).data;
+    let value = this.images.find(i => i.id == p.background);
+    if(value == null)
+      return "";
+    return value.data;
   }
 
   openPark(p) {
