@@ -13,6 +13,7 @@ import {Http, HttpModule, RequestOptions, XHRBackend} from "@angular/http";
 import {interceptHttpFactory, InterceptHttpService} from "../providers/http/intercept-http.service";
 import { ParkPage } from '../pages/park/park';
 import { TicketPage } from '../pages/ticket/ticket';
+import { AttractionPage } from '../pages/attraction/attraction';
 import {ImageService} from "../services/image.service";
 
 @NgModule({
@@ -21,7 +22,8 @@ import {ImageService} from "../services/image.service";
     HomePage,
     ListPage,
     ParkPage,
-    TicketPage
+    TicketPage,
+    AttractionPage
   ],
   imports: [
     BrowserModule,
@@ -34,7 +36,8 @@ import {ImageService} from "../services/image.service";
     HomePage,
     ListPage,
     ParkPage,
-    TicketPage
+    TicketPage,
+    AttractionPage
   ],
   providers: [
     StatusBar,

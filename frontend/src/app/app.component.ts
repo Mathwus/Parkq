@@ -7,6 +7,7 @@ import { HomePage } from '../pages/home/home';
 import { TicketPage } from '../pages/ticket/ticket'
 import { ParkService, Park } from '../services/park.service';
 import { ParkPage } from '../pages/park/park';
+import { AttractionPage } from '../pages/attraction/attraction';
 
 @Component({
   templateUrl: 'app.html',
@@ -32,6 +33,7 @@ export class MyApp {
     this.pages.push({ title: 'home', component: HomePage});
     this.pages.push({ title: 'perfil', component: HomePage});
     this.pages.push({ title: 'ticket', component: TicketPage});
+    this.pages.push({ title: 'attraction', component: AttractionPage});
     // Busca os parques
     this.parkService.getParks().subscribe((parks: Park[]) => {
       this.parks = parks;
