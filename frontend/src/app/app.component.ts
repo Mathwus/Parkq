@@ -64,6 +64,11 @@ export class MyApp {
     // Abre a pagina Passada como parametro
     this.nav.push(this.page.component);
   }
+
+  goHome(){
+    this.nav.setRoot(HomePage);
+  }
+
 }
 
 export interface Page {
