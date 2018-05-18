@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
 import { Attraction } from '../../services/attraction.service';
+import {Image, ImageService} from "../../services/image.service";
 
 @Component({
   selector: 'page-attraction',
@@ -8,7 +9,9 @@ import { Attraction } from '../../services/attraction.service';
 })
 export class AttractionPage {
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  selectedAttraction: Attraction;
 
+  constructor(public navCtrl: NavController, public navParams: NavParams) {
+    this.selectedAttraction = navParams.get('attraction');
   }
 }

@@ -23,7 +23,7 @@ export class HomePage {
     this.parkService.getParks().subscribe((parks: Park[]) => {
       this.parks = parks;
       parks.forEach(p =>
-        this.imageService.getImage(p.background).subscribe((image: Image) =>{
+        this.imageService.getImage(p.image).subscribe((image: Image) =>{
           this.images.push(image);
         })
       );
@@ -31,7 +31,7 @@ export class HomePage {
   }
 
   getImage(p: Park) : string{
-    let value = this.images.find(i => i.id == p.background);
+    let value = this.images.find(i => i.id == p.image);
     if(value == null)
       return "";
     return value.data;

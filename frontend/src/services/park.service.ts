@@ -11,7 +11,7 @@ export interface Park {
 	company: number,
 	name: string,
 	description: string,
-	background: number
+	image: number
 }
 
 @Injectable()
@@ -21,7 +21,7 @@ export class ParkService {
     }
     
     fixed: Park[] = JSON.parse(
-        `[{ "id": 1, "company": 1, "name": "Beto Carreiro World", "description": "ainda não sei", "background": 1 }]`);
+        `[{ "id": 1, "company": 1, "name": "Beto Carreiro World", "description": "ainda não sei", "image": 1 }]`);
 
 	public getParks(): Observable<Park[]> {
         return Observable.of(this.fixed);

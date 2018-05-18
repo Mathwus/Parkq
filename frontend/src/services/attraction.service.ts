@@ -22,7 +22,7 @@ export class AttractionService {
   }
 
   fixed: Attraction[] = JSON.parse(
-    `[{ "id": 1, "name": "Parque das aguas" }]`);
+    `[{ "id": 1, "name": "Parque das aguas", "qtyTicketsEntrain": 1, "timeEntrain": 1, "location": 1, "image": 1 }]`);
 
   public getAttractions(): Observable<Attraction[]> {
     return Observable.of(this.fixed);

@@ -1,6 +1,9 @@
 import { Component } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
 import { Park } from '../../services/park.service';
+import { Attraction, AttractionService } from '../../services/attraction.service';
+import { AttractionPage } from '../attraction/attraction'
+import { Image, ImageService } from "../../services/image.service";
 
 @Component({
   selector: 'page-park',
@@ -8,9 +11,39 @@ import { Park } from '../../services/park.service';
 })
 export class ParkPage {
   selectedPark: Park;
+  public attractions: Attraction[] = [];
+  public images: Image[] = [];
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  constructor(private attractionService: AttractionService,
+            private imageService: ImageService,
+            public navCtrl: NavController, 
+            public navParams: NavParams) {
     // If we navigated to this page, we will have an item available as a nav param
     this.selectedPark = navParams.get('park');
   }
+
+  public ngOnInit(): void {
+    // Busca os parques
+    this.attractionService.getAttractions().subscribe((attractions: Attraction[]) => {
+      this.attractions = attractions;
+      attractions.forEach(a =>
+        this.imageService.getImage(a.image).subscribe((image: Image) =>{
+          this.images.push(image);
+        })
+      );
+    });
+  }
+
+  getAttractionImage(a: Attraction) : string{
+    let value = this.images.find(i => i.id == a.image);
+    if(value == null)
+      return "";
+    return value.data;
+  }
+
+  openAttraction(a) {
+    // Sempre abre a Pagina Park passando como parametro o parque selecionado
+    this.navCtrl.push(AttractionPage, {attraction: a});
+  }
+
 }

@@ -16,6 +16,8 @@ import { TicketPage } from '../pages/ticket/ticket';
 import { AttractionPage } from '../pages/attraction/attraction';
 import {ImageService} from "../services/image.service";
 import { CompanyPage } from '../pages/company/company';
+import { ParkInfoPage } from '../pages/parkInfo/parkInfo';
+import { AttractionService } from '../services/attraction.service';
 
 @NgModule({
   declarations: [
@@ -26,7 +28,7 @@ import { CompanyPage } from '../pages/company/company';
     TicketPage,
     AttractionPage,
     CompanyPage,
-    ParkPage
+    ParkInfoPage
   ],
   imports: [
     BrowserModule,
@@ -42,12 +44,13 @@ import { CompanyPage } from '../pages/company/company';
     TicketPage,
     AttractionPage,
     CompanyPage,
-    ParkPage
+    ParkInfoPage
   ],
   providers: [
     StatusBar,
     SplashScreen,
     ImageService,
+    AttractionService,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
 		{
 			provide: LocationStrategy,
