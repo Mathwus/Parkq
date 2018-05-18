@@ -59,7 +59,6 @@ export class MyApp {
   }
 
   openAttraction(a) {
-    // Sempre abre a Pagina Park passando como parametro o parque selecionado
     this.nav.push(AttractionPage, {attraction: a});
   }
 
