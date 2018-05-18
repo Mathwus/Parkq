@@ -20,7 +20,7 @@ export class MyApp {
 
   rootPage: any = HomePage;
 
-	public parks: Park[];
+  public parks: Park[];
 
   pages: Array<Page> = [];
 
@@ -56,6 +56,10 @@ export class MyApp {
   openPark(p) {
     // Sempre abre a Pagina Park passando como parametro o parque selecionado
     this.nav.push(ParkPage, {park: p});
+  }
+
+  openAttraction(a) {
+    this.nav.push(AttractionPage, {attraction: a});
   }
 
   page:Page;
