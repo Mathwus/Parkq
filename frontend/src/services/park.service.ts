@@ -21,7 +21,7 @@ export class ParkService {
     }
     
     fixed: Park[] = JSON.parse(
-        `[{ "id": 1, "company": 1, "name": "Beto Carrero World", "description": "ainda não sei", "image": 1 },
+        `[{ "id": 1, "company": 1, "name": "Beto Carrero World", "description": "O Beto Carrero World foi fundado em 2002, tendo atrações das mais variadas experiencias a fim de proporcionar a melhor diversão possivel.", "image": 1 },
         { "id": 2, "company": 1, "name": "Disney", "description": "ainda não sei Disney", "image": 4 }]`);
 
 	public getParks(): Observable<Park[]> {
