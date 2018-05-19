@@ -19,10 +19,10 @@ export class ImageService {
     }
 
     fixed: Image[] = JSON.parse(
-        `[{ "id": 1, "name": "Plano Fundo", "Company": 1, "data": "/assets/imgs/beto-carrero.png" },
-        { "id": 2, "name": "Parque das aguas", "Company": 1, "data": "/assets/imgs/parque-aguas.jpg" },
-        { "id": 3, "name": "Navio Pirata", "Company": 1, "data": "/assets/imgs/navio-pirata.jpg" },
-        { "id": 4, "name": "Disney", "Company": 1, "data": "/assets/imgs/disney.jpg" }]`);
+        `[{ "id": 1, "name": "Plano Fundo", "Company": 1, "data": "assets/imgs/beto-carrero.png" },
+        { "id": 2, "name": "Parque das aguas", "Company": 1, "data": "assets/imgs/parque-aguas.jpg" },
+        { "id": 3, "name": "Navio Pirata", "Company": 1, "data": "assets/imgs/navio-pirata.jpg" },
+        { "id": 4, "name": "Disney", "Company": 1, "data": "assets/imgs/disney.jpg" }]`);
 
 	public getImages(): Observable<Image[]> {
         return Observable.of(this.fixed);
