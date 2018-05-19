@@ -21,7 +21,8 @@ export class ParkService {
     }
     
     fixed: Park[] = JSON.parse(
-        `[{ "id": 1, "company": 1, "name": "Beto Carreiro World", "description": "ainda não sei", "image": 1 }]`);
+        `[{ "id": 1, "company": 1, "name": "Beto Carrero World", "description": "ainda não sei", "image": 1 },
+        { "id": 2, "company": 1, "name": "Disney", "description": "ainda não sei Disney", "image": 4 }]`);
 
 	public getParks(): Observable<Park[]> {
         return Observable.of(this.fixed);

@@ -24,7 +24,7 @@ export class ParkPage {
 
   public ngOnInit(): void {
     // Busca os parques
-    this.attractionService.getAttractions().subscribe((attractions: Attraction[]) => {
+    this.attractionService.getAttractionsOfPark(this.selectedPark.id).subscribe((attractions: Attraction[]) => {
       this.attractions = attractions;
       attractions.forEach(a =>
         this.imageService.getImage(a.image).subscribe((image: Image) =>{

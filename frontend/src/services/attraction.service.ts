@@ -8,6 +8,7 @@ import "rxjs/add/observable/of";
 
 export interface Attraction {
   id: number,
+  idPark: number,
   name: string,
   qtyTicketsEntrain: number,
   timeEntrain: number,
@@ -22,7 +23,8 @@ export class AttractionService {
   }
 
   fixed: Attraction[] = JSON.parse(
-    `[{ "id": 1, "name": "Parque das aguas", "qtyTicketsEntrain": 1, "timeEntrain": 1, "location": 1, "image": 1 }]`);
+    `[{ "id": 1, "idPark": 1, "name": "Parque das aguas", "qtyTicketsEntrain": 1, "timeEntrain": 1, "location": 1, "image": 2 },
+    { "id": 2, "idPark": 1, "name": "Navio Pirata", "qtyTicketsEntrain": 1, "timeEntrain": 1, "location": 1, "image": 3 }]`);
 
   public getAttractions(): Observable<Attraction[]> {
     return Observable.of(this.fixed);
@@ -32,4 +34,11 @@ export class AttractionService {
     */
   }
 
+  public getAttractionsOfPark(idPark): Observable<Attraction[]> {
+    return Observable.of(this.fixed.filter(a => a.idPark == idPark));
+    /*
+    return this.http.get(environment.api + 'park?size=100')
+        .map((res: Response) => res.json().content);
+    */
+  }
 }
