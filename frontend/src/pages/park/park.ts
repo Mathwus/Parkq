@@ -4,6 +4,7 @@ import { Park } from '../../services/park.service';
 import { Attraction, AttractionService } from '../../services/attraction.service';
 import { AttractionPage } from '../attraction/attraction'
 import { Image, ImageService } from "../../services/image.service";
+import { ParkInfoPage } from '../parkInfo/parkInfo';
 
 @Component({
   selector: 'page-park',
@@ -44,6 +45,10 @@ export class ParkPage {
   openAttraction(a) {
     // Sempre abre a Pagina Park passando como parametro o parque selecionado
     this.navCtrl.push(AttractionPage, {attraction: a});
+  }
+
+  openInformation() {
+    this.navCtrl.push(ParkInfoPage, {park: this.selectedPark});
   }
 
 }
