@@ -10,8 +10,15 @@ import {Image, ImageService} from "../../services/image.service";
 export class AttractionPage {
 
   selectedAttraction: Attraction;
+  image: Image;
+  hasTicket: Boolean;
 
   constructor(public navCtrl: NavController, public navParams: NavParams) {
     this.selectedAttraction = navParams.get('attraction');
   }
+  
+  public ngOnInit(): void {
+    this.hasTicket = false;
+  }
+
 }
