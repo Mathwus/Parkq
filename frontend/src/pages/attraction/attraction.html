@@ -1,12 +1,52 @@
-<ion-header>
-    <ion-navbar>
-        <button ion-button menuToggle>
-        <ion-icon name="menu"></ion-icon>
-        </button>
-        <ion-title>Atrações</ion-title>
-    </ion-navbar>
-</ion-header>
+<div style="background-image: '/assets/imgs/parque-aguas.jpg'">
+    <ion-header class="white-navbar">
+        <ion-navbar transparent>
+            <button ion-button menuToggle>
+            <ion-icon name="menu"></ion-icon>
+            </button>
+            <ion-title>
+                {{selectedAttraction.name}}
+            </ion-title>
+        </ion-navbar>
+    </ion-header>
+</div>
 
 <ion-content>
-    Aki vai as coisas das atrações!
+    <div>
+        <img src="/assets/imgs/parque-aguas.jpg">
+
+        <button class="icon-button" ion-button large>
+            <ion-icon name="add-circle"></ion-icon>
+        </button>
+
+        <div *ngIf="!hasTicket">
+            <ion-card class="ticketInfo">
+                <div class="info blue">
+                    <div>30 min</div>
+                </div>
+                <div class="fixedInfo">
+                    Tempo aproximado para entrar no Brinquedo
+                </div>
+            </ion-card>
+        </div>
+        <div *ngIf="hasTicket">
+            <ion-card class="ticketInfo">
+                <div class="info red">
+                    <div>6 min</div>
+                </div>
+                <div class="fixedInfo">
+                    Tempo aproximado para entrar no Brinquedo
+                </div>
+            </ion-card>
+            <ion-card class="ticketInfo">
+                <div class="info green">
+                    <div>10</div>
+                </div>
+                <div class="fixedInfo">
+                    Posição na fila
+                </div>
+            </ion-card>
+        </div>
+        
+    </div>
 </ion-content>
