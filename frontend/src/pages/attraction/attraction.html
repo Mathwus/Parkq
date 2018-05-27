@@ -4,6 +4,11 @@
       <ion-icon name="menu"></ion-icon>
     </button>
     <ion-title>{{selectedAttraction.name}}</ion-title>
+    <ion-buttons end>
+      <button ion-button icon-only (click)="openInformation()">
+        <ion-icon name="information-circle"></ion-icon>
+      </button>
+    </ion-buttons>
   </ion-navbar>
 </ion-header>
 
@@ -40,7 +45,7 @@
 
   <ion-card *ngIf="hasTicket">
     <ion-card-header class="info green">
-      10
+      {{posQueue}}
     </ion-card-header>
     <ion-card-content>
       Posição na fila
@@ -52,7 +57,7 @@
       Ticket
     </ion-card-header>
     <ion-card-content>
-      Posição na fila
+      <qr-code [value]="getDataTicket()" [size]="200"></qr-code>
     </ion-card-content>
   </ion-card>
 

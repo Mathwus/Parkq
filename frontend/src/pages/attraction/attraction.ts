@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
 import { Attraction } from '../../services/attraction.service';
 import {Image, ImageService} from "../../services/image.service";
+import {AttractionInfoPage} from "../attractionInfo/attractionInfo";
 
 @Component({
   selector: 'page-attraction',
@@ -12,6 +13,7 @@ export class AttractionPage {
   selectedAttraction: Attraction;
   image: Image;
   hasTicket: Boolean;
+  posQueue : number;
 
   constructor(private imageService: ImageService,
               public navCtrl: NavController,
@@ -28,6 +30,7 @@ export class AttractionPage {
 
   requestTicket(){
     this.hasTicket = true;
+    this.posQueue = 401;
   }
 
   cancelTicket(){
@@ -39,4 +42,13 @@ export class AttractionPage {
       return "";
     return this.image.data;
   }
+
+  getDataTicket() : string{
+    return this.selectedAttraction.id + "|" + this.posQueue;
+  }
+
+  openInformation() {
+    this.navCtrl.push(AttractionInfoPage, {attraction: this.selectedAttraction});
+  }
+
 }

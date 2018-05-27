@@ -12,13 +12,13 @@ import { SplashScreen } from '@ionic-native/splash-screen';
 import {Http, HttpModule, RequestOptions, XHRBackend} from "@angular/http";
 import {interceptHttpFactory, InterceptHttpService} from "../providers/http/intercept-http.service";
 import { ParkPage } from '../pages/park/park';
-import { TicketPage } from '../pages/ticket/ticket';
 import { AttractionPage } from '../pages/attraction/attraction';
 import {ImageService} from "../services/image.service";
 import { CompanyPage } from '../pages/company/company';
 import { ParkInfoPage } from '../pages/parkInfo/parkInfo';
 import { AttractionService } from '../services/attraction.service';
 import { QRCodeModule } from 'angular2-qrcode';
+import {AttractionInfoPage} from "../pages/attractionInfo/attractionInfo";
 
 @NgModule({
   declarations: [
@@ -26,10 +26,10 @@ import { QRCodeModule } from 'angular2-qrcode';
     HomePage,
     ListPage,
     ParkPage,
-    TicketPage,
     AttractionPage,
     CompanyPage,
-    ParkInfoPage
+    ParkInfoPage,
+    AttractionInfoPage
   ],
   imports: [
     BrowserModule,
@@ -43,10 +43,10 @@ import { QRCodeModule } from 'angular2-qrcode';
     HomePage,
     ListPage,
     ParkPage,
-    TicketPage,
     AttractionPage,
     CompanyPage,
-    ParkInfoPage
+    ParkInfoPage,
+    AttractionInfoPage
   ],
   providers: [
     StatusBar,
