@@ -1,0 +1,18 @@
+<ion-header>
+    <ion-navbar>
+        <button ion-button menuToggle>
+          <ion-icon name="menu"></ion-icon>
+        </button>
+        <ion-title>{{selectedPark.name}}</ion-title>
+    </ion-navbar>
+</ion-header>
+
+<ion-content>
+    <img src="{{getImage()}}"/>
+
+    <ion-card>
+      <ion-card-content>
+        {{selectedPark.description}}
+      </ion-card-content>
+    </ion-card>
+</ion-content>
