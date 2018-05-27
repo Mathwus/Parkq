@@ -4,7 +4,6 @@ import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 
 import { HomePage } from '../pages/home/home';
-import { TicketPage } from '../pages/ticket/ticket'
 import { ParkService, Park } from '../services/park.service';
 import { ParkPage } from '../pages/park/park';
 import { AttractionPage } from '../pages/attraction/attraction';
@@ -34,7 +33,6 @@ export class MyApp {
 	public ngOnInit(): void {
     this.pages.push({ title: 'home', component: HomePage});
     this.pages.push({ title: 'perfil', component: HomePage});
-    this.pages.push({ title: 'ticket', component: TicketPage});
     this.pages.push({ title: 'attraction', component: AttractionPage});
     this.pages.push({ title: 'company', component: CompanyPage});
     this.pages.push({ title: 'parkInfo', component: ParkInfoPage});

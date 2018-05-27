@@ -1,52 +1,64 @@
-<div style="background-image: '/assets/imgs/parque-aguas.jpg'">
-    <ion-header class="white-navbar">
-        <ion-navbar transparent>
-            <button ion-button menuToggle>
-            <ion-icon name="menu"></ion-icon>
-            </button>
-            <ion-title>
-                {{selectedAttraction.name}}
-            </ion-title>
-        </ion-navbar>
-    </ion-header>
-</div>
+<ion-header >
+  <ion-navbar>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>{{selectedAttraction.name}}</ion-title>
+    <ion-buttons end>
+      <button ion-button icon-only (click)="openInformation()">
+        <ion-icon name="information-circle"></ion-icon>
+      </button>
+    </ion-buttons>
+  </ion-navbar>
+</ion-header>
 
 <ion-content>
-    <div>
-        <img src="/assets/imgs/parque-aguas.jpg">
+  <img src="{{getImage()}}"/>
+  <button *ngIf="!hasTicket" ion-fab center middle color="secondary" (click)="requestTicket()">
+    <ion-icon name="add"></ion-icon>
+  </button>
+  <button *ngIf="hasTicket" ion-fab center middle color="danger" (click)="cancelTicket()">
+    <ion-icon name="close"></ion-icon>
+  </button>
 
-        <button class="icon-button" ion-button large>
-            <ion-icon name="add-circle"></ion-icon>
-        </button>
+  <div class="statusAttraction">
+    400 Pessoas na Fila
+  </div>
 
-        <div *ngIf="!hasTicket">
-            <ion-card class="ticketInfo">
-                <div class="info blue">
-                    <div>30 min</div>
-                </div>
-                <div class="fixedInfo">
-                    Tempo aproximado para entrar no Brinquedo
-                </div>
-            </ion-card>
-        </div>
-        <div *ngIf="hasTicket">
-            <ion-card class="ticketInfo">
-                <div class="info red">
-                    <div>6 min</div>
-                </div>
-                <div class="fixedInfo">
-                    Tempo aproximado para entrar no Brinquedo
-                </div>
-            </ion-card>
-            <ion-card class="ticketInfo">
-                <div class="info green">
-                    <div>10</div>
-                </div>
-                <div class="fixedInfo">
-                    Posição na fila
-                </div>
-            </ion-card>
-        </div>
-        
-    </div>
+  <ion-card *ngIf="!hasTicket">
+    <ion-card-header class="info blue">
+      30 min
+    </ion-card-header>
+    <ion-card-content>
+      Tempo aproximado para entrar
+    </ion-card-content>
+  </ion-card>
+
+  <ion-card *ngIf="hasTicket">
+    <ion-card-header class="info red">
+      6 min
+    </ion-card-header>
+    <ion-card-content>
+      Tempo aproximado para entrar
+    </ion-card-content>
+  </ion-card>
+
+  <ion-card *ngIf="hasTicket">
+    <ion-card-header class="info green">
+      {{posQueue}}
+    </ion-card-header>
+    <ion-card-content>
+      Posição na fila
+    </ion-card-content>
+  </ion-card>
+
+  <ion-card *ngIf="hasTicket">
+    <ion-card-header>
+      Ticket
+    </ion-card-header>
+    <ion-card-content>
+      <qr-code [value]="getDataTicket()" [size]="200"></qr-code>
+    </ion-card-content>
+  </ion-card>
+
 </ion-content>
