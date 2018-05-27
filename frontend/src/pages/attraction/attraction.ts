@@ -13,12 +13,30 @@ export class AttractionPage {
   image: Image;
   hasTicket: Boolean;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  constructor(private imageService: ImageService,
+              public navCtrl: NavController,
+              public navParams: NavParams) {
     this.selectedAttraction = navParams.get('attraction');
   }
-  
+
   public ngOnInit(): void {
+    this.hasTicket = false;
+    this.imageService.getImage(this.selectedAttraction.image).subscribe((image: Image) => {
+      this.image = image;
+    });
+  }
+
+  requestTicket(){
+    this.hasTicket = true;
+  }
+
+  cancelTicket(){
     this.hasTicket = false;
   }
 
+  getImage() : string{
+    if(this.image == null)
+      return "";
+    return this.image.data;
+  }
 }
