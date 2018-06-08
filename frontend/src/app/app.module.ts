@@ -19,7 +19,7 @@ import { ParkInfoPage } from '../pages/parkInfo/parkInfo';
 import { AttractionService } from '../services/attraction.service';
 import { QRCodeModule } from 'angular2-qrcode';
 import {AttractionInfoPage} from "../pages/attractionInfo/attractionInfo";
-
+import { ScreenOrientation } from '@ionic-native/screen-orientation';
 @NgModule({
   declarations: [
     MyApp,
@@ -49,6 +49,7 @@ import {AttractionInfoPage} from "../pages/attractionInfo/attractionInfo";
     AttractionInfoPage
   ],
   providers: [
+    ScreenOrientation,
     StatusBar,
     SplashScreen,
     ImageService,

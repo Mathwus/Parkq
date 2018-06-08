@@ -9,6 +9,7 @@ import { ParkPage } from '../pages/park/park';
 import { AttractionPage } from '../pages/attraction/attraction';
 import { CompanyPage } from '../pages/company/company';
 import { ParkInfoPage } from '../pages/parkInfo/parkInfo';
+import { ScreenOrientation } from '@ionic-native/screen-orientation';
 
 @Component({
   templateUrl: 'app.html',
@@ -26,11 +27,13 @@ export class MyApp {
   constructor(private parkService: ParkService,
               public platform: Platform,
               public statusBar: StatusBar,
-              public splashScreen: SplashScreen) {
+              public splashScreen: SplashScreen,
+              public scr: ScreenOrientation) {
     this.initializeApp();
   }
 
 	public ngOnInit(): void {
+    this.scr.lock(this.scr.ORIENTATIONS.PORTRAIT);
     this.pages.push({ title: 'home', component: HomePage});
     this.pages.push({ title: 'perfil', component: HomePage});
     this.pages.push({ title: 'attraction', component: AttractionPage});
