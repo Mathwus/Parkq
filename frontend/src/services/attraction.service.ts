@@ -24,7 +24,7 @@ export class AttractionService {
   }
 
   fixed: Attraction[] = JSON.parse(
-    `[{ "id": 1, "idPark": 1, "name": "Parque das aguas", "description": "Parque das aguas", "qtyTicketsEntrain": 1, "timeEntrain": 1, "location": 1, "image": 2 },
+    `[{ "id": 1, "idPark": 1, "name": "Parque das Águas", "description": "Descrição do Parque das Águas: Bem Legal", "qtyTicketsEntrain": 1, "timeEntrain": 1, "location": 1, "image": 2 },
     { "id": 2, "idPark": 1, "name": "Navio Pirata", "description": "Navio Pirata", "qtyTicketsEntrain": 1, "timeEntrain": 1, "location": 1, "image": 3 }]`);
 
   public getAttractions(): Observable<Attraction[]> {
