@@ -17,7 +17,7 @@ export class ParkPage {
 
   constructor(private attractionService: AttractionService,
             private imageService: ImageService,
-            public navCtrl: NavController, 
+            public navCtrl: NavController,
             public navParams: NavParams) {
     // If we navigated to this page, we will have an item available as a nav param
     this.selectedPark = navParams.get('park');
@@ -27,19 +27,11 @@ export class ParkPage {
     // Busca os parques
     this.attractionService.getAttractionsOfPark(this.selectedPark.id).subscribe((attractions: Attraction[]) => {
       this.attractions = attractions;
-      attractions.forEach(a =>
-        this.imageService.getImage(a.image).subscribe((image: Image) =>{
-          this.images.push(image);
-        })
-      );
     });
   }
 
   getAttractionImage(a: Attraction) : string{
-    let value = this.images.find(i => i.id == a.image);
-    if(value == null)
-      return "";
-    return value.data;
+    return this.imageService.getImage(a.id_image)
   }
 
   openAttraction(a) {

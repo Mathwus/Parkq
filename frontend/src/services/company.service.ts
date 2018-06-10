@@ -1,33 +1,27 @@
 import {Response} from "express";
 import {Injectable} from "@angular/core";
 import {Observable} from "rxjs/Rx";
-import {Http} from "@angular/http";
 import {environment} from "../environments/environment";
 import "rxjs/add/operator/map";
 import "rxjs/add/observable/of";
+import {HttpClient} from "@angular/common/http";
 
 export interface Company {
-	id: number,
-	name: string,
-	description: string,
-	image: number
+  id: string,
+  name: string,
+  description: string
 }
 
 @Injectable()
 export class CompanyService {
 
-	constructor(private http: Http) {
-    }
-    
-    fixed: Company[] = JSON.parse(
-        `[{ "id": 1, "name": "Beto Carreiro World", "description": "ainda não sei", "image": 1 }]`);
+	constructor(private http: HttpClient) {
 
-	public getParks(): Observable<Company[]> {
-        return Observable.of(this.fixed);
-        /*
-        return this.http.get(environment.api + 'park?size=100')
-            .map((res: Response) => res.json().content);
-        */
+  }
+
+  public getCompanies(): Observable<Company[]> {
+    return this.http.get(environment.api + 'company')
+      .map((res: Response) => res.content);
 	}
 
 }

@@ -1,11 +1,8 @@
-import {Response} from "express";
 import {Injectable} from "@angular/core";
 import {Observable} from "rxjs/Rx";
-import {Http} from "@angular/http";
-import {environment} from "../environments/environment";
 import "rxjs/add/operator/map";
 import "rxjs/add/observable/of";
-import { DateTime } from "ionic-angular";
+import {DateTime} from "ionic-angular";
 
 export interface Ticket {
   id: number,
@@ -21,7 +18,7 @@ export interface Ticket {
 @Injectable()
 export class TicketService {
 
-  constructor(private http: Http) {
+  constructor() {
   }
 
   fixed: Ticket[] = JSON.parse(

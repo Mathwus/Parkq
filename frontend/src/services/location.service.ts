@@ -1,8 +1,5 @@
-import {Response} from "express";
 import {Injectable} from "@angular/core";
 import {Observable} from "rxjs/Rx";
-import {Http} from "@angular/http";
-import {environment} from "../environments/environment";
 import "rxjs/add/operator/map";
 import "rxjs/add/observable/of";
 
@@ -14,7 +11,7 @@ export interface Location {
 @Injectable()
 export class LocationService {
 
-  constructor(private http: Http) {
+  constructor() {
   }
 
   fixed: Location[] = JSON.parse(

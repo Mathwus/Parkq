@@ -1,7 +1,7 @@
-import { Component } from '@angular/core';
-import { NavController, NavParams } from 'ionic-angular';
-import { Attraction } from '../../services/attraction.service';
-import {Image, ImageService} from "../../services/image.service";
+import {Component} from '@angular/core';
+import {NavController, NavParams} from 'ionic-angular';
+import {Attraction} from '../../services/attraction.service';
+import {ImageService} from "../../services/image.service";
 import {AttractionInfoPage} from "../attractionInfo/attractionInfo";
 
 @Component({
@@ -11,7 +11,6 @@ import {AttractionInfoPage} from "../attractionInfo/attractionInfo";
 export class AttractionPage {
 
   selectedAttraction: Attraction;
-  image: Image;
   hasTicket: Boolean;
   posQueue : number;
 
@@ -23,9 +22,6 @@ export class AttractionPage {
 
   public ngOnInit(): void {
     this.hasTicket = false;
-    this.imageService.getImage(this.selectedAttraction.image).subscribe((image: Image) => {
-      this.image = image;
-    });
   }
 
   requestTicket(){
@@ -38,9 +34,7 @@ export class AttractionPage {
   }
 
   getImage() : string{
-    if(this.image == null)
-      return "";
-    return this.image.data;
+    return this.imageService.getImage(this.selectedAttraction.id_image)
   }
 
   getDataTicket() : string{

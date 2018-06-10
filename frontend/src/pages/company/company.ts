@@ -1,6 +1,5 @@
-import { Component } from '@angular/core';
-import { NavController, NavParams } from 'ionic-angular';
-import { Company } from '../../services/company.service';
+import {Component} from '@angular/core';
+import {NavController, NavParams} from 'ionic-angular';
 
 @Component({
   selector: 'page-company',
