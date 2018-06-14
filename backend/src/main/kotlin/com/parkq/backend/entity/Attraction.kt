@@ -23,10 +23,10 @@ data class Attraction (
         val description: String = "",
 
         @get: Basic
-        val line_size: Int = 1,
+        val linesize: Int = 1,
 
         @get: Basic
-        val estimated_time: Int = 1,
+        val estimatedtime: Int = 1,
 
         @get: NotBlank
         val company: String = "",

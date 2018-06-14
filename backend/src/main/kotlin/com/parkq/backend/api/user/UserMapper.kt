@@ -7,5 +7,5 @@ import org.springframework.stereotype.Component
 class UserMapper {
 
     fun toDTO(entity: User) =
-            UserDTO(entity.phone_number)
+            UserDTO(entity.phonenumber)
 }

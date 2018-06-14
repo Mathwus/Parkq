@@ -21,10 +21,10 @@ data class Park (
         @Size(max=255)
         val description: String = "",
 
-        val id_company: String = "",
+        val company: String = "",
 
-        val id_image: String = "",
+        val image: String = "",
 
-        val id_location: String = ""
+        val location: String = ""
 
 )

@@ -17,23 +17,23 @@ data class Ticket (
         val position: Int = 1,
 
         @get: NotBlank
-        val is_valid: Char = 'S',
+        val valid: Char = 'S',
 
         @get: NotBlank
-        val booking_time: LocalDateTime = LocalDateTime.now(),
+        val bookingtime: LocalDateTime = LocalDateTime.now(),
 
-        val entry_time: LocalDateTime,
-
-        @get: NotBlank
-        val id_company: String = "",
+        val entrytime: LocalDateTime,
 
         @get: NotBlank
-        val id_park: String = "",
+        val company: String = "",
 
         @get: NotBlank
-        val id_attraction: String = "",
+        val park: String = "",
 
         @get: NotBlank
-        val id_user: String = ""
+        val attraction: String = "",
+
+        @get: NotBlank
+        val user: String = ""
 
 )

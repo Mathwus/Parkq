@@ -35,16 +35,16 @@ class InitializeApi {
         if(0 == repositoryCompany.count().toInt()){
             print("Beto Carreiro COMPANY")
             val companyBeto = Company(
-                    name = "Beto Carreiro",
+                    name = "Beto Carreiro Company",
                     cnpj = "1006795914",
                     email = "beto@beto.com.br",
-                    phone_number = "(47) 99222-3222",
+                    phonenumber = "(47) 99222-3222",
                     description = "Fundado em 2002"
             )
             repositoryCompany.save(companyBeto)
 
             val imageBeto = Image(
-                    id_company = companyBeto.id,
+                    company = companyBeto.id,
                     data = KotlinUtilBase64Image.encoder("./src/main/resources/static/beto-carrero.png")
             )
             repositoryImage.save(imageBeto)
@@ -52,14 +52,14 @@ class InitializeApi {
             print("Beto Carreiro PARK")
             val parkBeto = Park(
                     name = "Beto Carreiro",
-                    id_company = companyBeto.id,
-                    id_image = imageBeto.id,
+                    company = companyBeto.id,
+                    image = imageBeto.id,
                     description = "Fundado em 2002"
             )
             repositoryPark.save(parkBeto)
 
             val imageNavio = Image(
-                    id_company = companyBeto.id,
+                    company = companyBeto.id,
                     data = KotlinUtilBase64Image.encoder("./src/main/resources/static/navio-pirata.jpg")
             )
             repositoryImage.save(imageNavio)
@@ -71,13 +71,13 @@ class InitializeApi {
                     image = imageNavio.id,
                     name = "Navio Pirata",
                     description = "O navio temido",
-                    estimated_time = 60,
-                    line_size = 60
+                    estimatedtime = 60,
+                    linesize = 60
             )
             repositoryAttraction.save(attractionNavio)
 
             val imageAguas = Image(
-                    id_company = companyBeto.id,
+                    company = companyBeto.id,
                     data = KotlinUtilBase64Image.encoder("./src/main/resources/static/parque-aguas.jpg")
             )
             repositoryImage.save(imageAguas)
@@ -89,23 +89,23 @@ class InitializeApi {
                     image = imageAguas.id,
                     name = "Parque das Aguas",
                     description = "Diversão e Aguas juntas",
-                    estimated_time = 80,
-                    line_size = 6
+                    estimatedtime = 80,
+                    linesize = 6
             )
             repositoryAttraction.save(attractionAguas)
 
             print("Disney COMPANY")
             val companyDisney = Company(
-                    name = "InitializeApi Carreiro",
+                    name = "Disney Company",
                     cnpj = "1006795914",
                     email = "diseny@disney.com",
-                    phone_number = "(47) 99222-3222",
+                    phonenumber = "(47) 99222-3222",
                     description = "Disney Cara!"
             )
             repositoryCompany.save(companyDisney)
 
             val imageDisney = Image(
-                    id_company = companyDisney.id,
+                    company = companyDisney.id,
                     data = KotlinUtilBase64Image.encoder("./src/main/resources/static/disney.jpg")
             )
             repositoryImage.save(imageDisney)
@@ -113,8 +113,8 @@ class InitializeApi {
             print("Disney PAK")
             val parkDisney = Park(
                     name = "Disney",
-                    id_company = companyDisney.id,
-                    id_image = imageDisney.id,
+                    company = companyDisney.id,
+                    image = imageDisney.id,
                     description = "OLOKO DISNEY!!!"
             )
             repositoryPark.save(parkDisney)

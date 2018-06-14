@@ -25,7 +25,7 @@ data class Company (
 
     @get: Basic
     @Size(max=15)
-    val phone_number: String = "",
+    val phonenumber: String = "",
 
     @get: Email
     @Size(max=60)
