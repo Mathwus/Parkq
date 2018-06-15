@@ -19,6 +19,6 @@ data class Image (
         val data: String = "",
 
         @get: NotBlank
-        val id_company: String = ""
+        val company: String = ""
 
 )

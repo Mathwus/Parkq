@@ -13,16 +13,18 @@
 </ion-header>
 
 <ion-content>
+  <ion-fab right middle edge>
+    <button *ngIf="!hasTicket" ion-fab color="secondary" (click)="requestTicket()">
+      <ion-icon name="add"></ion-icon>
+    </button>
+    <button *ngIf="hasTicket" ion-fab color="danger" (click)="cancelTicket()">
+      <ion-icon name="close"></ion-icon>
+    </button>
+  </ion-fab>
   <img src="{{getImage()}}"/>
-  <button *ngIf="!hasTicket" ion-fab center middle color="secondary" (click)="requestTicket()">
-    <ion-icon name="add"></ion-icon>
-  </button>
-  <button *ngIf="hasTicket" ion-fab center middle color="danger" (click)="cancelTicket()">
-    <ion-icon name="close"></ion-icon>
-  </button>
 
   <div class="statusAttraction">
-    400 Pessoas na Fila
+    400 Pessoas na Fila ss
   </div>
 
   <ion-card *ngIf="!hasTicket">

@@ -15,5 +15,5 @@ data class User (
 
         @get: NotBlank
         @Size(max=20)
-        val phone_number: String = ""
+        val phonenumber: String = ""
 )

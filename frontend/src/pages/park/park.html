@@ -13,11 +13,9 @@
 </ion-header>
 
 <ion-content class="card-background-page">
-
     <ion-card *ngFor="let a of attractions" (click)="openAttraction(a)" >
         <img src="{{getAttractionImage(a)}}"/>
         <div class="card-title">{{a.name}}</div>
     </ion-card>
 
 </ion-content>
-      
