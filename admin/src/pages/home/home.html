@@ -1,0 +1,32 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>
+      <img [height]="30" src="assets/imgs/logo.png"/>
+    </ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+
+  <ion-fab right bottom>
+    <button ion-fab color="secondary">
+      <ion-icon name="add"></ion-icon>
+    </button>
+  </ion-fab>
+
+  <ion-list>
+    <ion-list-header>
+      Companias
+    </ion-list-header>
+    <button ion-item *ngFor="let company of companies" (click)="goTo(company)">
+      {{ company.name }}
+    </button>
+
+    <ion-list-header>
+      Definições
+    </ion-list-header>
+    <button ion-item>
+      Usuários
+    </button>
+  </ion-list>
+</ion-content>

@@ -1,0 +1,31 @@
+<ion-header>
+  <ion-navbar>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>{{selectedCompany.name}}</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content>
+  <ion-fab top right edge>
+    <button ion-fab mini>
+      <ion-icon name="information"></ion-icon>
+    </button>
+  </ion-fab>
+
+  <ion-fab right bottom>
+    <button ion-fab color="secondary">
+      <ion-icon name="add"></ion-icon>
+    </button>
+  </ion-fab>
+
+  <ion-list>
+    <button ion-item *ngFor="let park of parks" (click)="goTo(park)">
+      <ion-avatar item-start>
+        <img src="{{getImage(park)}}">
+      </ion-avatar>
+      <h2>{{park.name}}</h2>
+    </button>
+  </ion-list>
+</ion-content>
