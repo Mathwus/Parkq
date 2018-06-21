@@ -13,11 +13,11 @@
 </ion-header>
 
 <ion-content>
-  <ion-fab right middle edge>
+  <ion-fab right bottom>
     <button *ngIf="!hasTicket" ion-fab color="secondary" (click)="requestTicket()">
       <ion-icon name="add"></ion-icon>
     </button>
-    <button *ngIf="hasTicket" ion-fab color="danger" (click)="cancelTicket()">
+    <button *ngIf="hasTicket" ion-fab mini color="danger" (click)="cancelTicket()">
       <ion-icon name="close"></ion-icon>
     </button>
   </ion-fab>
