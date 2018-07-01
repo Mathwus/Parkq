@@ -24,4 +24,12 @@ class CompanyService {
     private fun dto(producer: () -> Page<Company>): Page<CompanyDTO> =
             producer().map { mapper.toDTO(it) }
 
+    fun updateCompany(company: CompanyDTO) {
+        repository.save(mapper.toEntity(company))
+    }
+
+    fun deleteCompany(company: CompanyDTO) {
+        repository.delete(mapper.toEntity(company))
+    }
+
 }

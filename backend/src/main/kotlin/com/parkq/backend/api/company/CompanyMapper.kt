@@ -10,6 +10,22 @@ class CompanyMapper {
             CompanyDTO(
                     id = entity.id,
                     name = entity.name,
+                    cnpj = entity.cnpj,
                     description = entity.description
             )
+
+    fun toEntity(dto: CompanyDTO) =
+            if(dto.id.isEmpty())
+                Company(
+                        name = dto.name,
+                        cnpj = dto.cnpj,
+                        description = dto.description
+                )
+            else
+                Company(
+                        id = dto.id,
+                        name = dto.name,
+                        cnpj = dto.cnpj,
+                        description = dto.description
+                )
 }

@@ -7,6 +7,7 @@ import {HttpClient} from "@angular/common/http";
 
 export interface Company {
   id: string,
+  cnpj: string,
   name: string,
   description: string
 }
@@ -23,4 +24,12 @@ export class CompanyService {
       .map((res: Response) => res.content);
   }
 
+  public postCompany(company : Company){
+    return this.http.post(environment.api + 'company', company)
+  }
+
+  delete(company: Company) {
+    //FIXME Fazer comunicação para delete.
+    //return this.http.delete(environment.api + 'company', company,)
+  }
 }
