@@ -16,6 +16,11 @@ class AttractionService {
     @Autowired
     lateinit var repository: AttractionRepository
 
+    fun getAttractions(pageable: Pageable) =
+            dto {
+                repository.findAll(pageable)
+            }
+
     fun getAttractionsByPark(idPark : String, pageable: Pageable) =
             dto {
                 if(idPark.isEmpty()) repository.findAll(pageable)
@@ -24,5 +29,13 @@ class AttractionService {
 
     private fun dto(producer: () -> Page<Attraction>): Page<AttractionDTO> =
             producer().map { mapper.toDTO(it) }
+
+    fun updateAttraction(company: AttractionDTO) {
+        repository.save(mapper.toEntity(company))
+    }
+
+    fun deleteAttraction(company: AttractionDTO) {
+        repository.delete(mapper.toEntity(company))
+    }
 
 }

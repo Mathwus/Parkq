@@ -11,9 +11,13 @@ class AttractionApi {
     @Autowired
     lateinit var service: AttractionService
 
-    @GetMapping("")
-    fun getAttractions(@RequestParam(value = "park", defaultValue = "") idPark: String,
-                       pageable: Pageable) =
-            service.getAttractionsByPark(idPark, pageable)
+    @GetMapping
+    fun getAttractions(pageable: Pageable) = service.getAttractions(pageable)
+
+    @PostMapping
+    fun updateAttraction(@RequestBody attraction : AttractionDTO) = service.updateAttraction(attraction)
+
+    @DeleteMapping
+    fun deleteAttraction(@RequestBody attraction : AttractionDTO) = service.deleteAttraction(attraction)
 
 }
