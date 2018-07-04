@@ -1,5 +1,6 @@
 package com.parkq.backend.api.ticket
 
+import com.parkq.backend.entity.AttractionRepository
 import com.parkq.backend.entity.Ticket
 import com.parkq.backend.entity.TicketRepository
 import org.springframework.beans.factory.annotation.Autowired
@@ -17,17 +18,27 @@ class TicketService {
     @Autowired
     lateinit var repository: TicketRepository
 
-    fun getInfoTickets(pageable: Pageable):Int {
-        val position = repository.findPositionByUser("", pageable).first().position;
-        val quantity = repository.findQuantityByPosition(position, pageable).first().quantity;
-        val lastEntryTime = repository.findLastEntryTime("", pageable).first().lastentrytime;
-        val infoAttraction = repository.findAllByAttraction("", pageable).first();
-        val diffHour = (lastEntryTime.hour-LocalDateTime.now().hour)*60;
-        val diffMinute = (lastEntryTime.minute-LocalDateTime.now().minute);
-        val diffSecond = (lastEntryTime.second-LocalDateTime.now().second)/60;
+    @Autowired
+    lateinit var repositoryAttraction: AttractionRepository
 
-        val result = (diffHour + diffMinute + diffSecond) + ((quantity/infoAttraction.linesize)*infoAttraction.estimatedtime);
-        return result;
+    fun getInfoTickets(idAttration : String, idUser : String):Int {
+        val optionalPosition = repository.findOptionalByAttractionAndUserAndEntrytimeIsNullOrderByPositionDesc(idAttration, idUser)
+        var position = Int.MAX_VALUE
+        if(optionalPosition.isPresent)
+            position = optionalPosition.get().position
+        val quantity = repository.countByAttractionAndPositionLessThan(idAttration, position)
+        val optionalLastEntryTime = repository.findOptionalByAttractionOrderByEntrytimeDesc(idAttration)
+        var lastEntryTime = LocalDateTime.MIN
+        if(optionalLastEntryTime.isPresent)
+            lastEntryTime = optionalLastEntryTime.get().lastentrytime
+        val infoAttraction = repositoryAttraction.findById(idAttration)
+        val now = LocalDateTime.now()
+        val diffHour = (lastEntryTime.hour-now.hour)*60
+        val diffMinute = (lastEntryTime.minute-now.minute)
+        val diffSecond = (lastEntryTime.second-now.second)/60
+
+        val result = (diffHour + diffMinute + diffSecond) + ((quantity/infoAttraction.get().linesize)*infoAttraction.get().estimatedtime)
+        return result
     }
 
     fun getTickets(pageable: Pageable) =
