@@ -9,8 +9,10 @@ import {HttpClient} from "@angular/common/http";
 export interface Park {
 	id: string,
   image: string,
+  company: string,
 	name: string,
-	description: string
+  description: string,
+  location: string
 }
 
 @Injectable()

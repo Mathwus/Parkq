@@ -19,7 +19,7 @@ export class ParkEditPage {
               public events:Events) {
     // If we navigated to this page, we will have an item available as a nav param
     this.originPark = navParams.get('park');
-    this.selectedPark = { id :this.originPark.id, image: this.originPark.image, name: this.originPark.name, description: this.originPark.description };
+    this.selectedPark = { id :this.originPark.id, image: this.originPark.image, company: this.originPark.company, name: this.originPark.name, description: this.originPark.description, location: this.originPark.location };
   }
 
   public ngOnInit(): void {
@@ -28,6 +28,7 @@ export class ParkEditPage {
 
   public save(){
     this.originPark.image = this.selectedPark.image;
+    this.originPark.company = this.selectedPark.company;
     this.originPark.name = this.selectedPark.name;
     this.originPark.description = this.selectedPark.description;
     this.service.postPark(this.originPark)
