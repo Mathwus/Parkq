@@ -8,7 +8,7 @@ import {HttpClient} from "@angular/common/http";
 
 export interface Park {
 	id: string,
-  id_image: string,
+  image: string,
 	name: string,
 	description: string
 }
@@ -28,6 +28,15 @@ export class ParkService {
 	public getParksOfCompany(id : String):Observable<Park[]> {
     return this.http.get(environment.api + 'park?company=' + id)
       .map((res: Response) => res.content);
+  }
+
+  public postPark(park: Park){
+    return this.http.post(environment.api + 'park', park)
+  }
+
+  delete(park: Park) {
+    //FIXME Fazer comunicação para delete.
+    //return this.http.delete(environment.api + 'park', park,)
   }
 
 }

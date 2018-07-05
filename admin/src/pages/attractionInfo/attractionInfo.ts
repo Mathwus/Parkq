@@ -1,25 +1,25 @@
 import {Component} from "@angular/core";
-import {Park, ParkService} from "../../services/park.service";
+import {Attraction, AttractionService} from "../../services/attraction.service";
 import {ImageService} from "../../services/image.service";
-import {ParkEditPage} from "../parkEdit/parkEdit";
+import {AttractionEditPage} from "../attractionEdit/attractionEdit";
 import {NavController, NavParams} from "ionic-angular";
 import { AlertController } from 'ionic-angular';
 
 @Component({
-  selector: 'page-parkInfo',
-  templateUrl: 'parkInfo.html'
+  selector: 'page-attractionInfo',
+  templateUrl: 'attractionInfo.html'
 })
-export class ParkInfoPage {
-  selectedPark: Park;
-  parks: Park[];
+export class AttractionInfoPage {
+  selectedAttraction: Attraction;
+  attractions: Attraction[];
 
   constructor(private imageService: ImageService,
               public navCtrl: NavController,
-              public service: ParkService,
+              public service: AttractionService,
               public navParams: NavParams,
               private alertCtrl: AlertController) {
     // If we navigated to this page, we will have an item available as a nav param
-    this.selectedPark = navParams.get('park');
+    this.selectedAttraction = navParams.get('attraction');
   }
 
   public ngOnInit(): void {
@@ -27,11 +27,11 @@ export class ParkInfoPage {
   }
 
   public edit(){
-    this.navCtrl.push(ParkEditPage, {park: this.selectedPark});
+    this.navCtrl.push(AttractionEditPage, {attraction: this.selectedAttraction});
   }
 
   getImage() : string{
-    return this.imageService.getImage(this.selectedPark.image)
+    return this.imageService.getImage(this.selectedAttraction.image)
   }
 
   /*
