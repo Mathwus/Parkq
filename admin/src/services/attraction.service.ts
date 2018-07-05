@@ -9,8 +9,13 @@ import {HttpClient} from "@angular/common/http";
 export interface Attraction {
   id: string,
   image: string,
+  company: string,
+  park: string,
   name: string,
-  description : string
+  description : string,
+  linesize : number,
+  estimatedtime : number,
+  location : string
 }
 
 @Injectable()

@@ -21,6 +21,14 @@
     </ion-item>
 
     <ion-item>
+      <ion-input type="number" placeholder="0" [(ngModel)]="selectedAttraction.linesize"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-input type="number" placeholder="0" [(ngModel)]="selectedAttraction.estimatedtime"></ion-input>
+    </ion-item>
+
+    <ion-item>
       <ion-textarea placeholder="Descrição" [(ngModel)]="selectedAttraction.description"></ion-textarea>
     </ion-item>
   </ion-list>

@@ -19,7 +19,7 @@ export class AttractionEditPage {
               public events:Events) {
     // If we navigated to this page, we will have an item available as a nav param
     this.originAttraction = navParams.get('attraction');
-    this.selectedAttraction = { id :this.originAttraction.id, image: this.originAttraction.image, name: this.originAttraction.name, description: this.originAttraction.description };
+    this.selectedAttraction = { id :this.originAttraction.id, image: this.originAttraction.image, company: this.originAttraction.company, park: this.originAttraction.park, name: this.originAttraction.name, description: this.originAttraction.description, linesize: this.originAttraction.linesize , estimatedtime: this.originAttraction.estimatedtime, location: this.originAttraction.location };
   }
 
   public ngOnInit(): void {
@@ -28,8 +28,13 @@ export class AttractionEditPage {
 
   public save(){
     this.originAttraction.image = this.selectedAttraction.image;
+    this.originAttraction.company = this.selectedAttraction.company;
+    this.originAttraction.park = this.selectedAttraction.park;
     this.originAttraction.name = this.selectedAttraction.name;
     this.originAttraction.description = this.selectedAttraction.description;
+    this.originAttraction.linesize = this.selectedAttraction.linesize;
+    this.originAttraction.estimatedtime = this.selectedAttraction.estimatedtime;
+    this.originAttraction.location = this.selectedAttraction.location;
     this.service.postAttraction(this.originAttraction)
       .subscribe({
         complete : () => {
@@ -38,6 +43,12 @@ export class AttractionEditPage {
         }
         , error: err => console.log(err)})
 
+  }
+
+  public getTypeOperation() : string {
+    if(this.selectedAttraction.id == "")
+      return "Criação";
+    else return "Alteracao";
   }
 
   getImage() : string{

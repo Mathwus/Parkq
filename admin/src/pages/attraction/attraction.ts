@@ -4,6 +4,7 @@ import {Component} from "@angular/core";
 import {Attraction, AttractionService} from "../../services/attraction.service";
 import {Park} from "../../services/park.service";
 import {ParkInfoPage} from "../parkInfo/parkInfo";
+import {AttractionInfoPage} from "../attractionInfo/attractionInfo";
 
 @Component({
   selector: 'page-attraction',
@@ -34,5 +35,9 @@ export class AttractionPage {
 
   public viewPark(p: Park) {
     this.navCtrl.push(ParkInfoPage, {park: this.selectedPark});
+  }
+
+  public viewAttraction(a: Attraction){
+    this.navCtrl.push(AttractionInfoPage, {attraction: a});
   }
 }
