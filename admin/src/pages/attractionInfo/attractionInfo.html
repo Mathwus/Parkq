@@ -3,7 +3,7 @@
     <button ion-button menuToggle>
       <ion-icon name="menu"></ion-icon>
     </button>
-    <ion-title>{{selectedPark.name}}</ion-title>
+    <ion-title>{{selectedAttraction.name}}</ion-title>
   </ion-navbar>
 </ion-header>
 
@@ -20,7 +20,13 @@
   <ion-card>
     <ion-card-content>
       <ion-item class="breakLines" text-wrap>
-        {{selectedPark.description}}
+        {{selectedAttraction.lineseize}}
+      </ion-item>
+      <ion-item class="breakLines" text-wrap>
+        {{selectedAttraction.estimatedtime}}
+      </ion-item>
+      <ion-item class="breakLines" text-wrap>
+        {{selectedAttraction.description}}
       </ion-item>
     </ion-card-content>
   </ion-card>

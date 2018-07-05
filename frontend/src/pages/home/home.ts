@@ -25,7 +25,7 @@ export class HomePage {
   }
 
   getImage(p: Park) : string{
-    return this.imageService.getImage(p.id_image)
+    return this.imageService.getImage(p.image)
   }
 
   openPark(p) {

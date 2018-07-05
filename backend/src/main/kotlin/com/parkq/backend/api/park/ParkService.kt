@@ -5,6 +5,7 @@ import com.parkq.backend.entity.ParkRepository
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.data.domain.Page
 import org.springframework.data.domain.Pageable
+import org.springframework.stereotype.Repository
 import org.springframework.stereotype.Service
 
 @Service
@@ -25,4 +26,11 @@ class ParkService {
     private fun dto(producer: () -> Page<Park>): Page<ParkDTO> =
             producer().map { mapper.toDTO(it) }
 
+    fun updatePark(park: ParkDTO) {
+        repository.save(mapper.toEntity(park))
+    }
+
+    fun deletePark(park: ParkDTO) {
+        repository.delete(mapper.toEntity(park))
+    }
 }

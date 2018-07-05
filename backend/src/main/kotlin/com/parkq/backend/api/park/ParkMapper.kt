@@ -9,8 +9,29 @@ class ParkMapper {
     fun toDTO(entity: Park) =
             ParkDTO(
                     id = entity.id,
-                    id_image = entity.image,
+                    image = entity.image,
+                    company = entity.company,
                     name = entity.name,
-                    description = entity.description
+                    description = entity.description,
+                    location = entity.location
             )
+
+    fun toEntity(dto: ParkDTO) =
+            if(dto.id.isEmpty())
+                Park(
+                        image = dto.image,
+                        company = dto.company,
+                        name = dto.name,
+                        description = dto.description,
+                        location = dto.location
+                )
+            else
+                Park(
+                        id = dto.id,
+                        image = dto.image,
+                        company = dto.company,
+                        name = dto.name,
+                        description = dto.description,
+                        location = dto.location
+                )
 }

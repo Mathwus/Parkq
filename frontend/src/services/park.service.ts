@@ -8,7 +8,7 @@ import {HttpClient} from "@angular/common/http";
 
 export interface Park {
 	id: string,
-  id_image: string,
+  image: string,
 	name: string,
 	description: string
 }

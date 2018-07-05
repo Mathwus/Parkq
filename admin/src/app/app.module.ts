@@ -13,9 +13,12 @@ import {ParkService} from "../services/park.service";
 import {ParkPage} from "../pages/park/park";
 import {AttractionPage} from "../pages/attraction/attraction";
 import {AttractionService} from "../services/attraction.service";
-import {ParkInfoPage} from "../pages/parkInfo/parkInfo";
 import {CompanyInfoPage} from "../pages/companyInfo/companyInfo";
 import {CompanyEditPage} from "../pages/companyEdit/companyEdit";
+import {ParkInfoPage} from "../pages/parkInfo/parkInfo";
+import {ParkEditPage} from "../pages/parkEdit/parkEdit";
+import {AttractionInfoPage} from "../pages/attractionInfo/attractionInfo";
+import {AttractionEditPage} from "../pages/attractionEdit/attractionEdit";
 
 @NgModule({
   declarations: [
@@ -23,9 +26,12 @@ import {CompanyEditPage} from "../pages/companyEdit/companyEdit";
     HomePage,
     ParkPage,
     AttractionPage,
-    ParkInfoPage,
     CompanyInfoPage,
     CompanyEditPage,
+    ParkInfoPage,
+    ParkEditPage,
+    AttractionInfoPage,
+    AttractionEditPage,
   ],
   imports: [
     BrowserModule,
@@ -38,9 +44,12 @@ import {CompanyEditPage} from "../pages/companyEdit/companyEdit";
     HomePage,
     ParkPage,
     AttractionPage,
-    ParkInfoPage,
     CompanyInfoPage,
     CompanyEditPage,
+    ParkInfoPage,
+    ParkEditPage,
+    AttractionInfoPage,
+    AttractionEditPage,
   ],
   providers: [
     StatusBar,

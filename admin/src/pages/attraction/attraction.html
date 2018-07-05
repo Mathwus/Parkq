@@ -15,17 +15,17 @@
   </ion-fab>
 
   <ion-fab right bottom>
-    <button ion-fab color="secondary">
+    <button ion-fab color="secondary" (click)="createAttraction()">
       <ion-icon name="add"></ion-icon>
     </button>
   </ion-fab>
 
   <ion-list>
-    <ion-item *ngFor="let attraction of attractions" >
+    <button ion-item *ngFor="let attraction of attractions" (click)="viewAttraction(attraction)">
       <ion-avatar item-start>
         <img src="{{getImage(attraction)}}">
       </ion-avatar>
       <h2>{{attraction.name}}</h2>
-    </ion-item>
+    </button>
   </ion-list>
 </ion-content>
