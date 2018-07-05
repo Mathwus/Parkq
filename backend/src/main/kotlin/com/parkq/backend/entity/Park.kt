@@ -21,7 +21,7 @@ data class Park (
         @Size(max=255)
         val description: String = "",
 
-        val company: String = "",
+        var company: String = "",
 
         val image: String = "",
 

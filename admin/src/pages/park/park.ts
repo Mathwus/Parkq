@@ -5,6 +5,7 @@ import {ImageService} from "../../services/image.service";
 import {NavController, NavParams} from "ionic-angular";
 import {AttractionPage} from "../attraction/attraction";
 import {CompanyInfoPage} from "../companyInfo/companyInfo";
+import {ParkEditPage} from "../parkEdit/parkEdit";
 
 @Component({
   selector: 'page-park',
@@ -40,5 +41,10 @@ export class ParkPage {
 
   public info(){
     this.navCtrl.push(CompanyInfoPage, {company: this.selectedCompany});
+  }
+
+  public createPark(){
+    var newPark : Park = {id: "", name: "", company: this.selectedCompany.id, description: "", image: "", location: ""};
+    this.navCtrl.push(ParkEditPage, {park: newPark});
   }
 }
