@@ -1,10 +1,10 @@
-import { Component } from '@angular/core';
-import { NavController, NavParams } from 'ionic-angular';
-import { Park } from '../../services/park.service';
-import { Attraction, AttractionService } from '../../services/attraction.service';
-import { AttractionPage } from '../attraction/attraction'
-import { Image, ImageService } from "../../services/image.service";
-import { ParkInfoPage } from '../parkInfo/parkInfo';
+import {Component} from '@angular/core';
+import {NavController, NavParams} from 'ionic-angular';
+import {Park} from '../../services/park.service';
+import {Attraction, AttractionService} from '../../services/attraction.service';
+import {AttractionPage} from '../attraction/attraction'
+import {Image, ImageService} from "../../services/image.service";
+import {ParkInfoPage} from '../parkInfo/parkInfo';
 
 @Component({
   selector: 'page-park',
@@ -31,7 +31,7 @@ export class ParkPage {
   }
 
   getAttractionImage(a: Attraction) : string{
-    return this.imageService.getImage(a.id_image)
+    return this.imageService.getImage(a.image)
   }
 
   openAttraction(a) {

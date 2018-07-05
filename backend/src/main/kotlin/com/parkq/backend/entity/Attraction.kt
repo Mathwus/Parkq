@@ -14,11 +14,11 @@ data class Attraction (
         @Generated @Id
         val id: String = UUID.randomUUID().toString(),
 
-        @get: NotBlank
+        @get: Basic
         @Size(max=20)
         val name: String = "",
 
-        @get: NotBlank
+        @get: Basic
         @Size(max=255)
         val description: String = "",
 
@@ -34,7 +34,7 @@ data class Attraction (
         @get: NotBlank
         val park: String = "",
 
-        @get: NotBlank
+        @get : Basic
         val image: String = "",
 
         val location: String = ""

@@ -17,6 +17,6 @@ export class ParkInfoPage {
   }
 
   getImage() : string{
-    return this.imageService.getImage(this.selectedPark.id_image)
+    return this.imageService.getImage(this.selectedPark.image)
   }
 }

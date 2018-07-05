@@ -1,10 +1,11 @@
 import {ImageService} from "../../services/image.service";
-import {NavController, NavParams} from "ionic-angular";
+import {Events, NavController, NavParams} from "ionic-angular";
 import {Component} from "@angular/core";
 import {Attraction, AttractionService} from "../../services/attraction.service";
 import {Park} from "../../services/park.service";
 import {ParkInfoPage} from "../parkInfo/parkInfo";
 import {AttractionInfoPage} from "../attractionInfo/attractionInfo";
+import {AttractionEditPage} from "../attractionEdit/attractionEdit";
 
 @Component({
   selector: 'page-attraction',
@@ -17,7 +18,8 @@ export class AttractionPage {
   constructor(private attractionService: AttractionService,
               private imageService: ImageService,
               public navCtrl: NavController,
-              public navParams: NavParams) {
+              public navParams: NavParams,
+              public events:Events) {
     this.selectedPark = navParams.get('park');
   }
 
@@ -25,6 +27,11 @@ export class AttractionPage {
     // Busca as atrações
     this.attractionService.getAttractionsOfPark(this.selectedPark.id).subscribe((attractions: Attraction[]) => {
       this.attractions = attractions;
+    });
+    this.events.subscribe('reloadAttractions',() => {
+      this.attractionService.getAttractionsOfPark(this.selectedPark.id).subscribe((attractions: Attraction[]) => {
+        this.attractions = attractions;
+      });
     });
 
   }
@@ -39,5 +46,20 @@ export class AttractionPage {
 
   public viewAttraction(a: Attraction){
     this.navCtrl.push(AttractionInfoPage, {attraction: a});
+  }
+
+  public createAttraction(){
+    let newAttraction: Attraction = {
+      id: "",
+      name: "",
+      company: this.selectedPark.company,
+      park: this.selectedPark.id,
+      description: "",
+      estimatedtime: 0,
+      image:"",
+      linesize:1,
+      location:""
+    };
+    this.navCtrl.push(AttractionEditPage, {attraction: newAttraction});
   }
 }

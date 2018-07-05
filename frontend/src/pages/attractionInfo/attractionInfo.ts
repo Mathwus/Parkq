@@ -20,6 +20,6 @@ export class AttractionInfoPage {
   }
 
   getImage() : string{
-    return this.imageService.getImage(this.selectedAttraction.id_image)
+    return this.imageService.getImage(this.selectedAttraction.image)
   }
 }

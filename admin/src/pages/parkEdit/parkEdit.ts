@@ -35,7 +35,7 @@ export class ParkEditPage {
       .subscribe({
         complete : () => {
           this.events.publish('reloadParks');
-          this.navCtrl.pop()
+          this.navCtrl.pop();
         }
         , error: err => console.log(err)})
 

@@ -8,7 +8,7 @@ import {HttpClient} from "@angular/common/http";
 
 export interface Attraction {
   id: string,
-  id_image: string,
+  image: string,
   name: string,
   description : string
 }

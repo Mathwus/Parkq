@@ -2,7 +2,7 @@ import {Component} from "@angular/core";
 import {Company} from "../../services/company.service";
 import {Park, ParkService} from "../../services/park.service";
 import {ImageService} from "../../services/image.service";
-import {NavController, NavParams} from "ionic-angular";
+import {Events, NavController, NavParams} from "ionic-angular";
 import {AttractionPage} from "../attraction/attraction";
 import {CompanyInfoPage} from "../companyInfo/companyInfo";
 import {ParkEditPage} from "../parkEdit/parkEdit";
@@ -18,7 +18,8 @@ export class ParkPage {
   constructor(private parkService: ParkService,
               private imageService: ImageService,
               public navCtrl: NavController,
-              public navParams: NavParams) {
+              public navParams: NavParams,
+              public events:Events) {
     // If we navigated to this page, we will have an item available as a nav param
     this.selectedCompany = navParams.get('company');
   }
@@ -28,7 +29,11 @@ export class ParkPage {
     this.parkService.getParksOfCompany(this.selectedCompany.id).subscribe((parks: Park[]) => {
       this.parks = parks;
     });
-
+    this.events.subscribe('reloadParks',() => {
+      this.parkService.getParksOfCompany(this.selectedCompany.id).subscribe((parks: Park[]) => {
+        this.parks = parks;
+      });
+    });
   }
 
   getImage(p: Park) : string{
@@ -44,7 +49,7 @@ export class ParkPage {
   }
 
   public createPark(){
-    var newPark : Park = {id: "", name: "", company: this.selectedCompany.id, description: "", image: "", location: ""};
+    let newPark: Park = {id: "", name: "", company: this.selectedCompany.id, description: "", image: "", location: ""};
     this.navCtrl.push(ParkEditPage, {park: newPark});
   }
 }
