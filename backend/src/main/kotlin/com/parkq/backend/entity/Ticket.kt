@@ -34,6 +34,23 @@ data class Ticket (
         val attraction: String = "",
 
         @get: NotBlank
-        val user: String = ""
+        val user: String = "",
 
+        @get: NotBlank
+        val quantity: Int = 0,
+
+        @get: NotBlank
+        val remainingtime: String = "",
+
+        @get: NotBlank
+        val lastentrytime: LocalDateTime,
+
+        @get: NotBlank
+        val dtatual: String = "",
+
+        @get: NotBlank
+        val linesize: Int = 0,
+
+        @get: NotBlank
+        val estimatedtime: Int = 0
 )
