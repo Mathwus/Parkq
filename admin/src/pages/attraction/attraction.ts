@@ -29,7 +29,7 @@ export class AttractionPage {
   }
 
   getImage(a: Attraction) : string{
-    return this.imageService.getImage(a.id_image)
+    return this.imageService.getImage(a.image)
   }
 
   public viewPark(p: Park) {
