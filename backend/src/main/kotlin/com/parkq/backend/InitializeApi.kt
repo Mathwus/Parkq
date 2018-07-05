@@ -124,4 +124,16 @@ class InitializeApi {
         return companyService.getCompanies(pageable)
     }
 
+    @GetMapping("/arrumar")
+    fun arrumar(pageable: Pageable): Page<CompanyDTO>{
+        var parks = repositoryPark.findAll()
+        parks.forEach {
+            if(it.company.isEmpty()){
+                it.company = "5d153e2a-a2ee-44f0-ae35-2ec2f41015df"
+                repositoryPark.save(it)
+            }
+        }
+
+        return companyService.getCompanies(pageable)
+    }
 }

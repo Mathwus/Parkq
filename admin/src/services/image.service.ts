@@ -16,6 +16,8 @@ export class ImageService {
   }
 
   public getImage(id: String): string {
+    if(id.length <= 0)
+      return "assets/imgs/empty.png";
     return environment.api + "image?id=" + id;
   }
 }
