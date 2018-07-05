@@ -12,7 +12,9 @@ class AttractionApi {
     lateinit var service: AttractionService
 
     @GetMapping
-    fun getAttractions(pageable: Pageable) = service.getAttractions(pageable)
+    fun getAttractions(@RequestParam(value = "park", defaultValue = "") idPark: String,
+                       pageable: Pageable) =
+            service.getAttractionsByPark(idPark, pageable)
 
     @PostMapping
     fun updateAttraction(@RequestBody attraction : AttractionDTO) = service.updateAttraction(attraction)

@@ -16,11 +16,6 @@ class AttractionService {
     @Autowired
     lateinit var repository: AttractionRepository
 
-    fun getAttractions(pageable: Pageable) =
-            dto {
-                repository.findAll(pageable)
-            }
-
     fun getAttractionsByPark(idPark : String, pageable: Pageable) =
             dto {
                 if(idPark.isEmpty()) repository.findAll(pageable)

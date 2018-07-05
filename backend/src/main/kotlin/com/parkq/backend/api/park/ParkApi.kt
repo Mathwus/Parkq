@@ -12,8 +12,9 @@ class ParkApi {
     lateinit var service: ParkService
 
     @GetMapping
-    fun getParks(pageable: Pageable) = service.getParks(pageable)
-
+    fun getParks(@RequestParam(value = "company", defaultValue = "") idCompany: String,
+                pageable: Pageable) =
+        service.getPakrsOfCompany(idCompany, pageable)
     @PostMapping
     fun updatePark(@RequestBody park : ParkDTO) = service.updatePark(park)
 

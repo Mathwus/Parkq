@@ -17,11 +17,6 @@ class ParkService {
     @Autowired
     lateinit var repository: ParkRepository
 
-    fun getParks(pageable: Pageable) =
-            dto {
-                repository.findAll(pageable)
-            }
-
     fun getPakrsOfCompany(idCompany: String, pageable: Pageable) =
             dto {
                 if(idCompany.isEmpty()) repository.findAll(pageable)
