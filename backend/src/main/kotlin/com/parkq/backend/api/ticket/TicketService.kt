@@ -8,6 +8,7 @@ import org.springframework.data.domain.Page
 import org.springframework.data.domain.Pageable
 import org.springframework.stereotype.Service
 import java.time.LocalDateTime
+import java.util.*
 
 @Service
 class TicketService {
@@ -27,10 +28,10 @@ class TicketService {
         if(optionalPosition.isPresent)
             position = optionalPosition.get().position
         val quantity = repository.countByAttractionAndPositionLessThan(idAttration, position)
-        val optionalLastEntryTime = repository.findOptionalByAttractionOrderByEntrytimeDesc(idAttration)
+        val optionalLastEntryTime = repository.findAllByAttractionOrderByEntrytimeDesc(idAttration).firstOrNull()
         var lastEntryTime = LocalDateTime.MIN
-        if(optionalLastEntryTime.isPresent)
-            lastEntryTime = optionalLastEntryTime.get().lastentrytime
+        if(optionalLastEntryTime != null)
+            lastEntryTime = optionalLastEntryTime.lastentrytime
         val infoAttraction = repositoryAttraction.findById(idAttration)
         val now = LocalDateTime.now()
         val diffHour = (lastEntryTime.hour-now.hour)*60
@@ -41,13 +42,29 @@ class TicketService {
         return result
     }
 
-    fun getTickets(pageable: Pageable) =
-            dto {
+    private fun dto(producer: () -> Ticket): TicketDTO =
+            mapper.toDTO(producer())
 
-                repository.findAll(pageable)
-            }
+    fun getTicket(idAttraction: String, idUser: String): TicketDTO?{
+        val ticket = repository.findOptionalByAttractionAndUserAndEntrytimeIsNullOrderByPositionDesc(idAttraction, idUser);
+        if(ticket.isPresent)
+            return dto { ticket.get() }
+        return null
+    }
 
-    private fun dto(producer: () -> Page<Ticket>): Page<TicketDTO> =
-            producer().map { mapper.toDTO(it) }
+    fun requestTicket(idAttraction: String, idUser: String): TicketDTO {
+        var position = 1
+        val max = repository.findAllByAttractionOrderByEntrytimeDesc(idAttraction).firstOrNull()
+        if(max != null) position = max.position + 1
 
+        val ticket =Ticket(
+                attraction = idAttraction,
+                position = position,
+                user = idUser,
+                valid = "S",
+                remainingtime = "13",
+                entrytime = null)
+        repository.save(ticket)
+        return mapper.toDTO(ticket)
+    }
 }

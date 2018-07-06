@@ -33,4 +33,8 @@ class AttractionService {
         repository.delete(mapper.toEntity(company))
     }
 
+    fun getTicketsInQueue(idAttraction: String): Long {
+        return repository.count()
+    }
+
 }

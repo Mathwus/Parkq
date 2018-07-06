@@ -2,27 +2,23 @@ import {Injectable} from "@angular/core";
 import {Observable} from "rxjs/Rx";
 import "rxjs/add/operator/map";
 import "rxjs/add/observable/of";
+import {environment} from "../environments/environment";
+import {HttpClient} from "@angular/common/http";
 
 export interface User {
-  id: number,
-  phone_number: string
+  id: string,
+  name: string
 }
 
 @Injectable()
 export class UserService {
 
-  constructor() {
+  constructor(private http: HttpClient) {
   }
 
-  fixed: User[] = JSON.parse(
-    `[{ "id": 1, "phone_number": "992394545" }]`);
-
-  public getUsers(): Observable<User[]> {
-    return Observable.of(this.fixed);
-    /*
-    return this.http.get(environment.api + 'park?size=100')
-        .map((res: Response) => res.json().content);
-    */
+  public getUser(user: String): Observable<User> {
+    return this.http.post<User>(environment.api + 'user', {user})
+      .map(value => value);
   }
 
 }

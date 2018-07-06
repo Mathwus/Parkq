@@ -14,6 +14,5 @@ data class User (
         val id: String = UUID.randomUUID().toString(),
 
         @get: NotBlank
-        @Size(max=20)
-        val phonenumber: String = ""
+        val name: String = ""
 )

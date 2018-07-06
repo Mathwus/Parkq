@@ -5,4 +5,8 @@ import org.springframework.data.repository.PagingAndSortingRepository
 import org.springframework.stereotype.Repository
 
 @Repository
-interface UserRepository : JpaRepository<User, String>, PagingAndSortingRepository<User, String>
+interface UserRepository : JpaRepository<User, String>, PagingAndSortingRepository<User, String>{
+    fun existsByName(name:String): Boolean
+
+    fun findByName(name: String): User
+}

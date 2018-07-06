@@ -16,6 +16,10 @@ class AttractionApi {
                        pageable: Pageable) =
             service.getAttractionsByPark(idPark, pageable)
 
+    @GetMapping("/queue")
+    fun ticketsInQueue(@RequestParam(value = "attraction", defaultValue = "") idAttraction: String) =
+            service.getTicketsInQueue(idAttraction)
+
     @PostMapping
     fun updateAttraction(@RequestBody attraction : AttractionDTO) = service.updateAttraction(attraction)
 

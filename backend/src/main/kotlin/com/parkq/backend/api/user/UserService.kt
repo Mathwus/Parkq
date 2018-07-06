@@ -16,12 +16,17 @@ class UserService {
     @Autowired
     lateinit var repository: UserRepository
 
-    fun getUsers(pageable: Pageable) =
-            dto {
-                repository.findAll(pageable)
+    private fun dto(producer: () -> User): UserDTO =
+            mapper.toDTO(producer())
+
+    fun getUser(name: String) =
+            dto{
+                if(repository.existsByName(name))
+                    repository.findByName(name)
+                else{
+                    val user = User(name = name)
+                    repository.save(user)
+                    user
+                }
             }
-
-    private fun dto(producer: () -> Page<User>): Page<UserDTO> =
-            producer().map { mapper.toDTO(it) }
-
 }

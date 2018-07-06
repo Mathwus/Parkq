@@ -12,6 +12,6 @@ interface TicketRepository : JpaRepository<Ticket, String>, PagingAndSortingRepo
 
     fun countByAttractionAndPositionLessThan(idAttraction : String, position : Int): Int
 
-    fun findOptionalByAttractionOrderByEntrytimeDesc(idAttraction: String): Optional<Ticket>
+    fun findAllByAttractionOrderByEntrytimeDesc(idAttraction: String): List<Ticket>
 
 }

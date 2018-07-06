@@ -28,4 +28,8 @@ export class AttractionService {
     return this.http.get(environment.api + 'attraction?park=' + idPark)
       .map((res: Response) => res.content);
   }
+
+  public ticketsInQueue(idAttraction:String): Observable<number> {
+    return this.http.get<number>(environment.api + 'attraction/queue?attraction=' + idAttraction);
+  }
 }

@@ -1,5 +1,6 @@
 package com.parkq.backend.api.ticket
 
 data class TicketDTO(
+        var id : String,
         var position : Int,
-        var remainingtime : String)
+        var remaining_time : String)

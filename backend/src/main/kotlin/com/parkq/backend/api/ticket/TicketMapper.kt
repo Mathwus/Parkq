@@ -7,5 +7,5 @@ import org.springframework.stereotype.Component
 class TicketMapper {
 
     fun toDTO(entity: Ticket) =
-            TicketDTO(entity.position, entity.remainingtime)
+            TicketDTO(entity.id, entity.position, entity.remainingtime)
 }

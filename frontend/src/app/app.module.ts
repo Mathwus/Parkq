@@ -17,6 +17,8 @@ import {AttractionService} from '../services/attraction.service';
 import {QRCodeModule} from 'angular2-qrcode';
 import {AttractionInfoPage} from "../pages/attractionInfo/attractionInfo";
 import { HttpClientModule } from '@angular/common/http';
+import {UserService} from "../services/user.service";
+import {TicketService} from "../services/ticket.service";
 
 @NgModule({
   declarations: [
@@ -48,6 +50,8 @@ import { HttpClientModule } from '@angular/common/http';
     StatusBar,
     SplashScreen,
     ImageService,
+    UserService,
+    TicketService,
     AttractionService,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     {

@@ -10,12 +10,7 @@ import {environment} from "../environments/environment";
 export interface Ticket {
   id: number,
   position: number,
-  certification_hash: String,
-  is_valid: String,
-  booking_time: DateTime,
-  remaining_time: DateTime,
-  id_attraction: number,
-  id_user: number
+  remaining_time: DateTime
 }
 
 @Injectable()
@@ -25,14 +20,19 @@ export class TicketService {
   }
 
   /*fixed: Ticket[] = JSON.parse(
-    `[{ "id": 1, "position": "1", 
+    `[{ "id": 1, "position": "1",
     "is_valid":"S", "remaining_time":"09:30:00",
     "id_attraction":"1", "id_user":"1" }]`);*/
 
-  public getTickets(idAttraction: String, idUser: String): Observable<Ticket[]> {
+  public getTickets(idAttraction: String): Observable<Ticket> {
     //return Observable.of(this.fixed);
-    return this.http.get(environment.api + 'ticket?attraction=' + idAttraction + '?user=' + idUser)
-        .map((res: Response) => res.json().content);
+    return this.http.get<Ticket>(environment.api + 'ticket/new?attraction=' +
+      idAttraction + '?user=' + localStorage.getItem("user"))
+      ;
   }
 
+  public findTicket(idAttraction: String) : Observable<Ticket>{
+    return this.http.get<Ticket>(environment.api + 'ticket?attraction=' + idAttraction +
+      '&user=' + localStorage.getItem("user")).map(value => value);
+  }
 }

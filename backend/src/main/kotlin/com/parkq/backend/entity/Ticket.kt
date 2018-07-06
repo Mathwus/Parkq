@@ -3,6 +3,7 @@ package com.parkq.backend.entity
 import java.time.LocalDateTime
 import java.util.*
 import javax.annotation.Generated
+import javax.persistence.Basic
 import javax.persistence.Entity
 import javax.persistence.Id
 import javax.validation.constraints.NotBlank
@@ -13,44 +14,44 @@ data class Ticket (
         @Generated @Id
         val id: String = UUID.randomUUID().toString(),
 
-        @get: NotBlank
+        @get: Basic
         val position: Int = 1,
 
-        @get: NotBlank
-        val valid: Char = 'S',
+        @get: Basic
+        val valid: String = "S",
 
-        @get: NotBlank
+        @get: Basic
         val bookingtime: LocalDateTime = LocalDateTime.now(),
 
-        val entrytime: LocalDateTime,
+        val entrytime: LocalDateTime? = null,
 
-        @get: NotBlank
-        val company: String = "",
+        @get: Basic
+        val company: String = "T",
 
-        @get: NotBlank
-        val park: String = "",
+        @get: Basic
+        val park: String = "T",
 
-        @get: NotBlank
+        @get: Basic
         val attraction: String = "",
 
-        @get: NotBlank
+        @get: Basic
         val user: String = "",
 
-        @get: NotBlank
-        val quantity: Int = 0,
+        @get: Basic
+        val quantity: Int = 1,
 
-        @get: NotBlank
-        val remainingtime: String = "",
+        @get: Basic
+        val remainingtime: String = "T",
 
-        @get: NotBlank
-        val lastentrytime: LocalDateTime,
+        @get: Basic
+        val lastentrytime: LocalDateTime = LocalDateTime.now(),
 
-        @get: NotBlank
+        @get: Basic
         val dtatual: String = "",
 
-        @get: NotBlank
-        val linesize: Int = 0,
+        @get: Basic
+        val linesize: Int = 1,
 
-        @get: NotBlank
-        val estimatedtime: Int = 0
+        @get: Basic
+        val estimatedtime: Int = 1
 )

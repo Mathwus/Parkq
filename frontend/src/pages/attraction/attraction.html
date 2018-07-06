@@ -14,20 +14,20 @@
 
 <ion-content>
   <ion-fab right bottom>
-    <button *ngIf="!hasTicket" ion-fab color="secondary" (click)="requestTicket()">
+    <button *ngIf="!selectedTicket" ion-fab color="secondary" (click)="requestTicket()">
       <ion-icon name="add"></ion-icon>
     </button>
-    <button *ngIf="hasTicket" ion-fab mini color="danger" (click)="cancelTicket()">
+    <button *ngIf="selectedTicket" ion-fab mini color="danger" (click)="cancelTicket()">
       <ion-icon name="close"></ion-icon>
     </button>
   </ion-fab>
   <img src="{{getImage()}}"/>
 
   <div class="statusAttraction">
-    400 Pessoas na Fila ss
+    {{ticketsInQueue}} Pessoas na Fila ss
   </div>
 
-  <ion-card *ngIf="!hasTicket">
+  <ion-card *ngIf="!selectedTicket">
     <ion-card-header class="info blue">
       30 min
     </ion-card-header>
@@ -36,25 +36,25 @@
     </ion-card-content>
   </ion-card>
 
-  <ion-card *ngIf="hasTicket">
+  <ion-card *ngIf="selectedTicket">
     <ion-card-header class="info red">
-      6 min
+      {{selectedTicket.remaining_time}} min
     </ion-card-header>
     <ion-card-content>
       Tempo aproximado para entrar
     </ion-card-content>
   </ion-card>
 
-  <ion-card *ngIf="hasTicket">
+  <ion-card *ngIf="selectedTicket">
     <ion-card-header class="info green">
-      {{posQueue}}
+      {{selectedTicket.position}}
     </ion-card-header>
     <ion-card-content>
       Posição na fila
     </ion-card-content>
   </ion-card>
 
-  <ion-card *ngIf="hasTicket">
+  <ion-card *ngIf="selectedTicket">
     <ion-card-header>
       Ticket
     </ion-card-header>
